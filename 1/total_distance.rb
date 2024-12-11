@@ -1,8 +1,23 @@
-# 1. Find pairs (lowest with lowest and so on)
-# 2. Calculate the distance between the pairs
-# 3. Find total distance between left list and right list (sum of distances)
+# 1. Parse input
+# 2. Find pairs (lowest with lowest and so on)
+# 3. Calculate the distance between the pairs
+# 4. Find total distance between left list and right list (sum of distances)
 
-def total_distance(left_list, right_list)
+def parse_input(filename)
+  left_list = []
+  right_list = []
+
+  File.open(filename).each_line do |line|
+    left, right = line.split(" ").map(&:to_i)
+    left_list << left
+    right_list << right
+  end
+
+  [left_list, right_list]
+end
+
+def total_distance(filename)
+  left_list, right_list = parse_input(filename)
   left_list.sort!
   right_list.sort!
 
@@ -14,4 +29,4 @@ def total_distance(left_list, right_list)
   distances.sum
 end
 
-puts total_distance([1, 2, 3, 4, 7], [3, 3, 4, 7, 9])
+puts total_distance("1-input.txt")
