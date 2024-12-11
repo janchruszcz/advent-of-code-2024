@@ -29,4 +29,11 @@ def total_distance(filename)
   distances.sum
 end
 
+def similarity_score(filename)
+  left_list, right_list = parse_input(filename)
+
+  similarity_score = left_list.map { |num| right_list.count(num) * num }.sum
+end
+
 puts total_distance("1-input.txt")
+puts similarity_score("1-input.txt")
