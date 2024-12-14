@@ -15,12 +15,9 @@ def is_valid_report?(report)
 end
 
 def is_safe_with_dampener?(report)
-  # Check if already safe without dampener
   return true if is_valid_report?(report)
   
-  # Try removing each level one at a time
   report.length.times do |i|
-    # Create new array without element at index i
     dampened_report = report[0...i] + report[i+1..]
     return true if is_valid_report?(dampened_report)
   end
